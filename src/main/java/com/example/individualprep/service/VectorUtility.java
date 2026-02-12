@@ -21,7 +21,6 @@ public class VectorUtility {
     }
     
     public double dotProduct(double[] v1, double[] v2) throws IllegalArgumentException{
-        // TODO: Implement me properly!
         if(v1.length != v2.length)
             throw  new IllegalArgumentException("Different vector sizes cannot be processed with dot product");
         double result = 0.0;
