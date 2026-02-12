@@ -18,6 +18,15 @@ class ArithmeticUtilityTest {
         double actualResult = arithmeticUtility.subtract(numBig, numLow);
 
         assertEquals(expectedResult, actualResult);
+    @DisplayName("Should calculate positive power correctly")
+    void exponent_PositivePower_Success() {
+        double base = 2.0;
+        int power = 3;
+        double expectedResult = 8.0;
+
+        double actualResult = arithmeticUtility.exponent(base, power);
+
+        assertEquals(expectedResult, actualResult, 0.0001);
     }
 
     @Test
@@ -30,6 +39,14 @@ class ArithmeticUtilityTest {
         double actualResult = arithmeticUtility.subtract(numLow, numBig);
 
         assertEquals(expectedResult, actualResult);
+    void exponent_ZeroPower_ReturnsOne() {
+        double base = 123.45;
+        int power = 0;
+        double expectedResult = 1.0;
+
+        double actualResult = arithmeticUtility.exponent(base, power);
+
+        assertEquals(expectedResult, actualResult, 0.0001);
     }
 
     @Test
@@ -40,6 +57,12 @@ class ArithmeticUtilityTest {
         double expectedResult = 3.044;
 
         double actualResult = arithmeticUtility.subtract(num1, num2);
+    void exponent_NegativePower_Success() {
+        double base = 2.0;
+        int power = -2;
+        double expectedResult = 0.25;
+
+        double actualResult = arithmeticUtility.exponent(base, power);
 
         assertEquals(expectedResult, actualResult, 0.0001);
     }

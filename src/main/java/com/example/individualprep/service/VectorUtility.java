@@ -6,8 +6,18 @@ import org.springframework.stereotype.Service;
 public class VectorUtility {
     
     public double[] add(double[] v1, double[] v2) {
-        // TODO: Implement me properly!
-        return new double[] { 0.0, 0.0, 0.0 };
+        if (v1.length != v2.length) {
+            throw new IllegalArgumentException("Vector lengths must match");
+        }
+
+        int dimension = v1.length;
+        double[] result = new double[dimension];
+
+        for (int index = 0; index < dimension; index++) {
+            result[index] = v1[index] + v2[index];
+        }
+
+        return result;
     }
 
     public double[] subtract(double[] v1, double[] v2) {
@@ -20,9 +30,16 @@ public class VectorUtility {
         return new double[] { 0.0, 0.0, 0.0 };
     }
     
-    public double dotProduct(double[] v1, double[] v2) {
+    public double dotProduct(double[] v1, double[] v2) throws IllegalArgumentException{
         // TODO: Implement me properly!
-        return 0.0;
+        if(v1.length != v2.length)
+            throw  new IllegalArgumentException("Different vector sizes cannot be processed with dot product");
+        double result = 0.0;
+        for(int i = 0; i < v1.length; i++){
+            result += (v1[i] * v2[i]);
+        }
+
+        return result;
     }
     
     public double norm(double[] v1) {
