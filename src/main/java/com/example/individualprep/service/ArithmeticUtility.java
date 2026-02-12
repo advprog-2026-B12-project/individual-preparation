@@ -11,7 +11,6 @@ public class ArithmeticUtility {
     }
 
     public double subtract(double o1, double o2) {
-        // TODO: Implement me properly!
         return o1 - o2;
     }
 
