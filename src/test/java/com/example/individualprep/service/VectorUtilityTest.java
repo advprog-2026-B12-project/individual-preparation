@@ -36,6 +36,42 @@ class VectorUtilityTest {
     }
 
     @Test
+    @DisplayName("Should return vector with all elements multiplied by scalar")
+    void multiply_Scalar_Success() {
+        double[] vector = {1.0, -2.0, 3.0};
+        int scalar = 3;
+        double[] expectedResult = {3.0, -6.0, 9.0};
+
+        double[] actualResult = vectorUtility.multiply(vector, scalar);
+
+        assertArrayEquals(expectedResult, actualResult, 0.0001);
+    }
+
+    @Test
+    @DisplayName("Should return zero vector when multiplying by zero scalar")
+    void multiply_ZeroScalar_Success() {
+        double[] vector = {1.0, -2.0, 3.0};
+        int scalar = 0;
+        double[] expectedResult = {0.0, 0.0, 0.0};
+
+        double[] actualResult = vectorUtility.multiply(vector, scalar);
+
+        assertArrayEquals(expectedResult, actualResult, 0.0001);
+    }
+
+    @Test
+    @DisplayName("Should return negative vector when multiplying by negative scalar")
+    void multiply_NegativeScalar_Success() {
+        double[] vector = {1.0, -2.0, 3.0};
+        int scalar = -2;
+        double[] expectedResult = {-2.0, 4.0, -6.0};
+
+        double[] actualResult = vectorUtility.multiply(vector, scalar);
+
+        assertArrayEquals(expectedResult, actualResult, 0.0001);
+    }
+
+    @Test
     @DisplayName("Should handle negative numbers correctly in dot product")
     void dot_NegativeNumbers_Success() {
         double[] negativeVector = {-1.0, -5.0};
