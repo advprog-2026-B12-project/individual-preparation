@@ -57,7 +57,7 @@ class VectorUtilityTest {
     }
 
     @Test
-    @DisplayName("Should handle negative numbers correctly in addition") // Deskripsi diperbaiki
+    @DisplayName("Should handle negative numbers correctly in addition")
     void add_NegativeNumbers_Success() {
         double[] negativeVector = {-1.0, -5.0};
         double[] mixedVector = {1.0, -2.0};
