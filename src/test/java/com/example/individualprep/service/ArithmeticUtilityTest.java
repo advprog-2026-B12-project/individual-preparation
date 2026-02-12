@@ -78,4 +78,40 @@ class ArithmeticUtilityTest {
 
         assertEquals(expectedResult, actualResult, 0.0001);
     }
+
+    @Test
+    @DisplayName("Multiplication of two positive numbers")
+    void multiply_PositiveNumbers_Success() {
+        double num1 = 4.0;
+        double num2 = 5.0;
+        double expectedResult = 20.0;
+
+        double actualResult = arithmeticUtility.multiply(num1, num2);
+
+        assertEquals(expectedResult, actualResult, 0.0001);
+    }
+
+    @Test
+    @DisplayName("Multiplication involving a negative number")
+    void multiply_NegativeNumber_Success() {
+        double num1 = -4.0;
+        double num2 = 5.0;
+        double expectedResult = -20.0;
+
+        double actualResult = arithmeticUtility.multiply(num1, num2);
+
+        assertEquals(expectedResult, actualResult, 0.0001);
+    }
+
+    @Test
+    @DisplayName("Multiplication by zero")
+    void multiply_ByZero_Success() {
+        double num1 = 4.0;
+        double num2 = 0.0;
+        double expectedResult = 0.0;
+
+        double actualResult = arithmeticUtility.multiply(num1, num2);
+
+        assertEquals(expectedResult, actualResult, 0.0001);
+    }
 }
