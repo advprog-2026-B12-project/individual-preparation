@@ -112,4 +112,39 @@ class VectorUtilityTest {
 
         assertThrows(IllegalArgumentException.class, () -> vectorUtility.add(vector2D, vector3D));
     }
+
+    @Test
+    @DisplayName("Should return difference of two vectors when dimensions match")
+    void subtract_Success() {
+        double[] vectorA = {10.0, 5.0, 3.0};
+        double[] vectorB = {4.0, 2.0, 1.0};
+        double[] expectedResult = {6.0, 3.0, 2.0};
+
+        double[] actualResult = vectorUtility.subtract(vectorA, vectorB);
+
+        assertArrayEquals(expectedResult, actualResult, 0.0001);
+    }
+
+    @Test
+    @DisplayName("Should handle negative results correctly in subtraction")
+    void subtract_NegativeResults_Success() {
+        double[] vectorA = {1.0, 2.0};
+        double[] vectorB = {5.0, 5.0};
+        double[] expectedResult = {-4.0, -3.0};
+
+        double[] actualResult = vectorUtility.subtract(vectorA, vectorB);
+
+        assertArrayEquals(expectedResult, actualResult, 0.0001);
+    }
+
+    @Test
+    @DisplayName("Should throw exception when vector dimensions mismatch in subtraction")
+    void subtract_DimensionMismatch_ThrowsException() {
+        double[] vector2D = {1.0, 2.0};
+        double[] vector3D = {1.0, 2.0, 3.0};
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            vectorUtility.subtract(vector2D, vector3D);
+        });
+    }
 }
