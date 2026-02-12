@@ -2,7 +2,9 @@ package com.example.individualprep.service;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ArithmeticUtilityTest {
 
@@ -113,5 +115,40 @@ class ArithmeticUtilityTest {
         double actualResult = arithmeticUtility.multiply(num1, num2);
 
         assertEquals(expectedResult, actualResult, 0.0001);
+    }
+
+    @Test
+    @DisplayName("Division of two positive numbers")
+    void divide_PositiveNumbers_Success() {
+        double num1 = 10.0;
+        double num2 = 2.0;
+        double expectedResult = 5.0;
+
+        double actualResult = arithmeticUtility.divide(num1, num2);
+
+        assertEquals(expectedResult, actualResult, 0.0001);
+    }
+
+    @Test
+    @DisplayName("Division involving a negative number")
+    void divide_NegativeNumber_Success() {
+        double num1 = -10.0;
+        double num2 = 2.0;
+        double expectedResult = -5.0;
+
+        double actualResult = arithmeticUtility.divide(num1, num2);
+
+        assertEquals(expectedResult, actualResult, 0.0001);
+    }
+
+    @Test
+    @DisplayName("Division by zero (throws IllegalArgumentException)")
+    void divide_ByZero_ThrowsException() {
+        double num1 = 10.0;
+        double num2 = 0.0;
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            arithmeticUtility.divide(num1, num2);
+        });
     }
 }
