@@ -6,8 +6,18 @@ import org.springframework.stereotype.Service;
 public class VectorUtility {
     
     public double[] add(double[] v1, double[] v2) {
-        // TODO: Implement me properly!
-        return new double[] { 0.0, 0.0, 0.0 };
+        if (v1.length != v2.length) {
+            throw new IllegalArgumentException("Vector lengths must match");
+        }
+
+        int dimension = v1.length;
+        double[] result = new double[dimension];
+
+        for (int index = 0; index < dimension; index++) {
+            result[index] = v1[index] + v2[index];
+        }
+
+        return result;
     }
 
     public double[] subtract(double[] v1, double[] v2) {
