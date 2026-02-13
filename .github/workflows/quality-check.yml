@@ -4,10 +4,10 @@ on:
   push:
     branches:
       - main
+      - chore/ci-setup-fadhil
   pull_request:
     branches:
       - main
-      - chore/ci-setup-fadhil
 
 jobs:
   build:
