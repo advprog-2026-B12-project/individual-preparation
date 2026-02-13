@@ -147,4 +147,47 @@ class VectorUtilityTest {
             vectorUtility.subtract(vector2D, vector3D);
         });
     }
+
+    @Test
+    @DisplayName("Should return correct Euclidean norm for positive vector")
+    void norm_PositiveVector_Success() {
+        double[] v = {3.0, 4.0};
+        double expected = 5.0;
+
+        double actual = vectorUtility.norm(v);
+
+        assertEquals(expected, actual, 0.0001);
+    }
+
+    @Test
+    @DisplayName("Should return correct Euclidean norm for negative vector")
+    void norm_NegativeVector_Success() {
+        double[] v = {-3.0, -4.0};
+        double expected = 5.0;
+
+        double actual = vectorUtility.norm(v);
+
+        assertEquals(expected, actual, 0.0001);
+    }
+
+    @Test
+    @DisplayName("Should return zero when vector is zero vector")
+    void norm_ZeroVector_Success() {
+        double[] v = {0.0, 0.0, 0.0};
+        double expected = 0.0;
+
+        double actual = vectorUtility.norm(v);
+
+        assertEquals(expected, actual, 0.0001);
+    }
+
+    @Test
+    @DisplayName("Should throw exception when vector is empty")
+    void norm_EmptyVector_ThrowsException() {
+        double[] v = {};
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            vectorUtility.norm(v);
+        });
+    }
 }
