@@ -54,7 +54,6 @@ public class VectorUtility {
     }
     
     public double norm(double[] v1) {
-        // TODO: Implement me properly!
         return 0.0;
     }
 }
