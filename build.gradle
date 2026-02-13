@@ -3,7 +3,8 @@ plugins {
 	id 'org.springframework.boot' version '4.0.2'
 	id 'io.spring.dependency-management' version '1.1.7'
 	id 'checkstyle'
-	id 'org.sonarqube' version '7.2.2.6593'
+	id 'jacoco'
+	id "org.sonarqube" version "7.2.2.6593"
 }
 
 group = 'com.example'
@@ -14,6 +15,15 @@ java {
 	toolchain {
 		languageVersion = JavaLanguageVersion.of(21)
 	}
+}
+
+checkstyle {
+	toolVersion = "10.12.4"
+	configFile = file("${rootDir}/config/checkstyle/checkstyle.xml")
+}
+
+jacoco {
+	toolVersion = "0.8.12"
 }
 
 repositories {
@@ -28,35 +38,23 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+	finalizedBy jacocoTestReport
 }
 
-// Checkstyle configuration
-checkstyle {
-	toolVersion = '10.12.0'
-	configFile = file("${rootDir}/config/checkstyle/checkstyle.xml")
-}
-
-checkstyleMain {
-	source = 'src/main/java'
-}
-
-checkstyleTest {
-	source = 'src/test/java'
-}
-
-tasks.withType(Checkstyle).configureEach {
+jacocoTestReport {
+	dependsOn test
 	reports {
 		xml.required = true
 		html.required = true
 	}
 }
 
-// SonarQube configuration
 sonar {
 	properties {
 		property "sonar.projectKey", "advprog-2026-B12-project_individual-preparation"
 		property "sonar.organization", "advprog-2026-b12-project"
 		property "sonar.host.url", "https://sonarcloud.io"
+		property "sonar.coverage.jacoco.xmlReportPaths", "${layout.buildDirectory.get()}/reports/jacoco/test/jacocoTestReport.xml"
 		property "sonar.gradle.skipCompile", "true"
 	}
 }
