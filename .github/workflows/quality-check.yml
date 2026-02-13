@@ -40,8 +40,8 @@ jobs:
       - name: Make gradlew executable
         run: chmod +x gradlew
 
-      - name: Build, Checkstyle, Test, and SonarQube Analysis
+      - name: Build, Checkstyle, Test, JaCoCo, and Sonar Analysis
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: ./gradlew build sonar --info
+        run: ./gradlew build jacocoTestReport sonar --info
